@@ -25,12 +25,12 @@ jobs:
         env:
           release_bucket: deploy-layer
           release_bucket_uri: s3://deploy-layer
-          release_id: ${{ format('lambda-lib-{0}-dev.zip', github.head_ref )}}
-          release_layer: ${{ format('lambda-lib-{0}-dev', github.head_ref )}}
+          release_id: lambda-lib.zip
+          release_layer: lambda-lib
         run: |
           echo building release $release_id
           mkdir -p nodejs/node_modules/lambda-lib
-          cp index.js package.json nodejs/node_modules/
+          cp index.js package.json nodejs/node_modules/lambda-lib
           zip -r $release_id nodejs
           ls
 
