@@ -28,14 +28,13 @@ jobs:
           release_id: lambda-lib.zip
           release_layer: lambda-lib
         run: |
-          echo building release $release_id
-          mkdir -p nodejs/node_modules/lambda-lib
-          cp index.js package.json nodejs/node_modules/lambda-lib
-          zip -r $release_id nodejs
-          
-          aws s3 cp $release_id $release_bucket_uri
-          aws lambda publish-layer-version --layer-name $release_layer --content S3Bucket=$release_bucket,S3Key=$release_id --compatible-runtimes nodejs18.x
-          
-          arn=aws lambda list-layer-versions --layer-name lambda-lib --region eu-west-3 --query 'LayerVersions[0].LayerVersionArn'
-
-          aws lambda update-function-configuration --function-name load_lib --layers $arn
+          # echo building release $release_id
+          # mkdir -p nodejs/node_modules/lambda-lib
+          # cp index.js package.json nodejs/node_modules/lambda-lib
+          # zip -r $release_id nodejs
+          # 
+          # aws s3 cp $release_id $release_bucket_uri
+          # aws lambda publish-layer-version --layer-name $release_layer --content S3Bucket=$release_bucket,S3Key=$release_id --compatible-runtimes nodejs18.x
+          # 
+          aws lambda list-layer-versions --layer-name lambda-lib --region eu-west-3 #--query 'LayerVersions[0].LayerVersionArn'
+          # aws lambda update-function-configuration --function-name load_lib --layers $arn
