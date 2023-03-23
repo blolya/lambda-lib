@@ -32,5 +32,6 @@ jobs:
           mkdir -p nodejs/node_modules/${{ github.event.repository.name }}
           cp index.js package.json nodejs/node_modules/
           zip -r $release_id nodejs
+          ls
 
           aws s3 cp $release_id $release_bucket_uri
