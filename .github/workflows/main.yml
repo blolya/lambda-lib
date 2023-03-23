@@ -54,5 +54,5 @@ jobs:
       - name: update
         run: |
           arn=$(aws lambda list-layer-versions --layer-name lambda-lib --region eu-west-3 --query 'LayerVersions[0].LayerVersionArn')
-          aws lambda update-function-configuration --function-name load_lib --layers $arn
+          aws lambda update-function-configuration --function-name load_lib --layers $(echo "${arn}")
 
