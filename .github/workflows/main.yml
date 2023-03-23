@@ -36,5 +36,5 @@ jobs:
           # aws s3 cp $release_id $release_bucket_uri
           # aws lambda publish-layer-version --layer-name $release_layer --content S3Bucket=$release_bucket,S3Key=$release_id --compatible-runtimes nodejs18.x
           # 
-          aws lambda list-layer-versions --layer-name lambda-lib --region eu-west-3 #--query 'LayerVersions[0].LayerVersionArn'
+          aws lambda list-layer-versions --layer-name "arn:aws:lambda:eu-west-3:966793346923:layer:lambda-lib" --region eu-west-3 #--query 'LayerVersions[0].LayerVersionArn'
           # aws lambda update-function-configuration --function-name load_lib --layers $arn
