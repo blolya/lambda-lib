@@ -29,4 +29,5 @@ jobs:
           release_layer: ${{ format('<REPO NAME>-{0}-dev', github.head_ref )}}
         run: |
           echo building release $release_id
+          ls
 
