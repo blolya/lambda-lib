@@ -55,4 +55,4 @@ jobs:
         run: |
           aws lambda list-layer-versions --layer-name lambda-lib --region eu-west-3 --query 'LayerVersions[0].LayerVersionArn' > res
           cat res
-          # aws lambda update-function-configuration --function-name load_lib --layers "$arn"
+          aws lambda update-function-configuration --function-name load_lib --layers (cat res)
