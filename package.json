@@ -1,0 +1,10 @@
+{
+  "name": "lambda-lib",
+  "version": "0.0.1",
+  "description": "Test library for lambda function",
+  "main": "index.js",
+  "repository": "git@github.com:blolya/lambda-lib.git",
+  "author": "blolya <mast-94@mail.ru>",
+  "license": "MIT",
+  "private": false
+}
