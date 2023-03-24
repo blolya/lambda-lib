@@ -19,7 +19,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-3
+          aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Zip it all up and upload to S3
         env:
@@ -50,8 +50,8 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-3
+          aws-region: ${{ secrets.AWS_REGION }}
       - name: update
         run: |
-          version=$(aws lambda list-layer-versions --layer-name lambda-lib --region eu-west-3 --query 'LayerVersions[0].Version')
-          aws lambda update-function-configuration --function-name load_lib --layers "arn:aws:lambda:eu-west-3:966793346923:layer:lambda-lib:${version}"
+          version=$(aws lambda list-layer-versions --layer-name lambda-lib --region ${{ secrets.AWS_REGION }} --query 'LayerVersions[0].Version')
+          aws lambda update-function-configuration --function-name load_lib --layers "${{ secrets.AWS_LAYER_ARN }}:${version}"
