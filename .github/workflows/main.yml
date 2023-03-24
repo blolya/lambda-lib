@@ -29,8 +29,8 @@ jobs:
           release_layer: lambda-lib
         run: |
           echo building release $release_id
-          mkdir -p nodejs/node_modules/lambda-lib
-          cp index.js package.json nodejs/node_modules/lambda-lib
+          mkdir -p nodejs/node_modules/$release_layer
+          cp index.js package.json nodejs/node_modules/$release_layer
           zip -r $release_id nodejs
           
           aws s3 cp $release_id $release_bucket_uri
